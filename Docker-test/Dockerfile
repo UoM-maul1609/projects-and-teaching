@@ -29,4 +29,6 @@ ENTRYPOINT service ssh restart && bash
 #RUN make NETCDFLIB=-L/usr/lib/x86_64-linux-gnu/ NETCDFMOD=/usr/include/ FFLAGS='-O2 -w -o' FFLAGS2='-O2 -w -o' FFLAGSOMP='-O2 -w -o'
 
 # app is installed
+ENTRYPOINT ["tail"]
+CMD ["-f","/dev/null"]
 
