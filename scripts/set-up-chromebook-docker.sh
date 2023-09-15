@@ -4,5 +4,8 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debi
    stable"
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo docker run hello-world
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
