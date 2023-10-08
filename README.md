@@ -45,7 +45,7 @@ See the example
 # Projects
 Here are details of projects:
  
-1. [Single Column Modelling](scm-modelling/)
+1. [Single Column Modelling](scm-precipitation-modelling/)
 2. [Secondary Ice Modelling](parcel-modelling/)
 3. [Saturn's Hexagon](saturn-hexagon-modelling/)
 4. [Marine Cloud Brightening](mcb-modelling/)
