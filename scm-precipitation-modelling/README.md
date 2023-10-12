@@ -2,13 +2,17 @@
 
 The code repository for the Single Column Model is available at [https://github.com/UoM-maul1609/simple-cloud-model](https://github.com/UoM-maul1609/simple-cloud-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
-## Starting the Docker Container
+## Logging in to the container instance
+Prof. Paul Connolly will start up the container instance, give you your username and password and the IP address of the server. To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
+   
+    ssh -X <username>@<IP-address>  
 
-See details for starting the docker container in the main README.md file [here](https://github.com/UoM-maul1609/projects-and-teaching). Note that unless you save the state of the docker container it will return to the initial state every time you start it. All information will be lost when you exit. 
+The first time you log in you may need to answer 'yes' to a question about connecting. 
+
 
 ## Downloading the Single Column Model
 
-Once the docker container has started you will be able to interact with it in much the same way as interacting with a linux terminal. To download the single column model type:
+Once logged in you will be interacting the container instance in the same way as linux server through the terminal. To download the single column model type:
 	
 	git clone https://github.com/UoM-maul1609/simple-cloud-model
 	
@@ -49,21 +53,19 @@ This will generate a file at `/tmp/scm_plot.png`
 ## Obtaining the output file
 How to we obtain the output file from inside the container, so that we can view it or insert it in a report?
 
-The running Docker container can be considered to be a server that you can log into with SFTP (Secure File Transfer Protocol). 
+We can open up another `CMD`, or `terminal` window  and connect with SFTP (Secure File Transfer Protocol). 
 
 From another terminal or CMD window type
 
-	sftp -P 2022 root@127.0.0.1
+	sftp <username>@<IP-address>
 	
-You may be asked a question. If so type `yes` and press enter. 
+Then you will be asked to enter a password.
 
-Then you will be asked to enter a password, which is `root123`.
-
-This will log you into the docker container. You can bring the file over to your local system by typing
+This will log you into the container instance. You can bring the file over to your local system by typing
 
 	get /tmp/scm_plot.png
 	
-And then you will be able to view it in the usual way.
+And then you will be able to view it in the usual way. By default it will be transferred to the folder that you were in before you logged in with ssh. 
 
 ## Factorial Analysis
 
