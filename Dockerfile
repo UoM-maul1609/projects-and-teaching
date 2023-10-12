@@ -21,7 +21,63 @@ RUN pip3 install basemap --user
 
 RUN systemctl enable ssh
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN echo 'root:root123' |chpasswd
+RUN echo 'root:root$123xyz!@' |chpasswd
+
+# SET UP SOME USERS
+RUN useradd -ms /bin/bash mpec01
+RUN useradd -ms /bin/bash mpec02
+RUN useradd -ms /bin/bash mpec03
+RUN useradd -ms /bin/bash mpec04
+RUN useradd -ms /bin/bash mpec05
+RUN useradd -ms /bin/bash mpec06
+RUN useradd -ms /bin/bash mpec07
+RUN useradd -ms /bin/bash mpec08
+RUN useradd -ms /bin/bash mpec09
+RUN useradd -ms /bin/bash mpec10
+
+RUN useradd -ms /bin/bash proj01
+RUN useradd -ms /bin/bash proj02
+RUN useradd -ms /bin/bash proj03
+RUN useradd -ms /bin/bash proj04
+RUN useradd -ms /bin/bash proj05
+RUN useradd -ms /bin/bash proj06
+RUN useradd -ms /bin/bash proj07
+RUN useradd -ms /bin/bash proj08
+RUN useradd -ms /bin/bash proj09
+RUN useradd -ms /bin/bash proj10
+
+RUN echo 'mpec01:mpec01-123' |chpasswd
+RUN echo 'mpec02:mpec02-123' |chpasswd
+RUN echo 'mpec03:mpec03-123' |chpasswd
+RUN echo 'mpec04:mpec04-123' |chpasswd
+RUN echo 'mpec05:mpec05-123' |chpasswd
+RUN echo 'mpec06:mpec06-123' |chpasswd
+RUN echo 'mpec07:mpec07-123' |chpasswd
+RUN echo 'mpec08:mpec08-123' |chpasswd
+RUN echo 'mpec09:mpec09-123' |chpasswd
+RUN echo 'mpec10:mpec10-123' |chpasswd
+
+RUN echo 'proj01:proj01-xyz' |chpasswd
+RUN echo 'proj02:proj02-xyz' |chpasswd
+RUN echo 'proj03:proj03-xyz' |chpasswd
+RUN echo 'proj04:proj04-xyz' |chpasswd
+RUN echo 'proj05:proj05-xyz' |chpasswd
+RUN echo 'proj06:proj06-xyz' |chpasswd
+RUN echo 'proj07:proj07-xyz' |chpasswd
+RUN echo 'proj08:proj08-xyz' |chpasswd
+RUN echo 'proj09:proj09-xyz' |chpasswd
+RUN echo 'proj10:proj10-xyz' |chpasswd
+
+RUN useradd -ms /bin/bash martin
+RUN useradd -ms /bin/bash paul
+RUN useradd -ms /bin/bash dave
+
+RUN echo 'martin:gallagher$123' |chpasswd
+RUN echo 'paul:connolly$123' |chpasswd
+RUN echo 'dave:topping$123' |chpasswd
+
+
+
 RUN service ssh start
 ENTRYPOINT service ssh restart && bash
 

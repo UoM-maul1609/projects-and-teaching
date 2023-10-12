@@ -1,46 +1,24 @@
 # Projects and Teaching
 This repository describes how to set-up your system to run many of the numerical models at [https://github.com/UoM-maul1609](https://github.com/UoM-maul1609).
 
-In order to run the models easily on your computer you can install a program called [Docker Desktop](https://www.docker.com/products/docker-desktop/). Docker Desktop allows you to run applications in a standardized environment using a so-called container. Think of it as a virtual environment that contains everything you need to be able to run the code. 
+I have set up some container instances on microsoft Azure for you to use and I will explain how you can use these. Why not just run the code on my own computer? There are two main reasons for the models used at [https://github.com/UoM-maul1609](https://github.com/UoM-maul1609). 
 
-Why not just run the code on my computer without Docker Desktop? There are two main reasons for the models used at [https://github.com/UoM-maul1609](https://github.com/UoM-maul1609). 
+Firstly, for models that are written in Python, you would need to install Python and all the necessary libraries to be able to run the model. This can be a pain at times. Using a container instance we are able to ship Python and all the necessary libraries we need to run the python code.  
 
-Firstly, for models that are written in Python, you would need to install Python and all the necessary libraries. This can be a pain at times. Using a Docker container we are able to ship Python and all the necessary libraries we need to run the python code.  
-
-Secondly, for models that are written in Fortran, you would need to install a Fortran compiler, NetCDF libraries and MPI libraries and then compile the model for your system. This can also be a pain. Using a Docker container we can also ship all the necessary compilers, libraries and other tools to enable you to easily get up to speed. 
+Secondly, for models that are written in Fortran, you would need to install a Fortran compiler, NetCDF libraries and MPI libraries and then compile the model for your system. This can also be a pain. Using a container instance we can also ship all the necessary compilers, libraries and other tools to enable you to easily get up to speed. 
 
 # Other software to install
 
-If you are running windows you may find it useful to install [git for Windows](https://gitforwindows.org). This enables you to download code repositories from Github using the command line so it is quite useful. Git is already installed by default on most Macs, so additional software is not needed. 
+If you are running the windows operating system you may find it useful to install [Xming](https://sourceforge.net/projects/xming/). This will enable you to open up windows thorugh the terminal when you log in to the container instance. Xming needs to be started and runs in the back ground before you connect to the container instance.
 
-On a Chromebook you should first install the linux developer tools.
 
-On Mac, Windows or Chromebook open a terminal or Git-CMD window and then download this git repository by typing
-	
-	git clone https://github.com/UoM-maul1609/projects-and-teaching
-	
-On the Chromebook you do not install Docker Desktop, but you install Docker by typing 
-	
-	./projects-and-teaching/scripts/set-up-chromebook-docker.sh
-	
-# Downloading / running the container from GHCR
-I have included a container image as a package with this repository. You need to make sure that Docker Desktop is running (if on Mac or Windows). 
+If you are using a Chromebook you should enable the linux developer tools. Search for it and enable it.
 
-Assuming you have downloaded this git repository, you can then download and run the container by typing the following.
-
-Mac:
-
-	./projects-and-teaching/scripts/docker-run-mac.sh
-Chromebook:
-
-	./projects-and-teaching/scripts/docker-run-chromeos.sh
-Windows: 
-	
-	.\projects-and-teaching\scripts\docker-run-win.bat
+If you are using a mac, you may find it useful to install [XQuartz](https://www.xquartz.org), which is the same as Xming, but for the mac. XQuartz needs to be started and runs in the back ground before you connect to the container instance.
 
 
 # Example taught module
-See the example
+If you are using the container instances in one of my taught modules this is probably because you are working off campus. We have servers you can connect to when on campus. While the instructions are very similar, the IP addresses and authentication will be slightly different. 
 
 # Projects
 Here are details of projects:
@@ -50,17 +28,3 @@ Here are details of projects:
 3. [Saturn's Hexagon](saturn-hexagon-modelling/)
 4. [Marine Cloud Brightening](mcb-modelling/)
 
-# Notes for admins
-If interested you may build your own container image from the Dockerfile in this repository. First run Docker Desktop and, from the commandline, make sure you are in the folder of this repository, and build the docker file
-
-    docker build -t project-and-teaching-all .
-    
-This will build the docker container image from the definitions in the Dockerfile, which you can deploy at test as follows. If on a mac type this first
-
-    xhost +
-
-Then type
-
-    docker run -it --rm -e DISPLAY=host.docker.internal:0 -v /tmp/.x11-unix:/tmp/.x11-unix  project-and-teaching-all
-    
-The above line runs the docker image. The -it flag means run interactively, so we can interact with the shell and project-and-teaching is the name of the docker image. The display is exported to you local computer so you can open up windows (e.g. text editors).
