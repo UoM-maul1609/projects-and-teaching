@@ -23,8 +23,8 @@ If you are using the container instances in one of my taught modules this is pro
 # Projects
 Here are details of projects:
  
-1. [Single Column Modelling](scm-precipitation-modelling/)
-2. [Secondary Ice Modelling](parcel-modelling/)
-3. [Saturn's Hexagon](saturn-hexagon-modelling/)
-4. [Marine Cloud Brightening](mcb-modelling/)
+1. [Single Column Modelling](scm-precipitation-modelling/README.md)
+2. [Secondary Ice Modelling](parcel-modelling/README.md)
+3. [Saturn's Hexagon](saturn-hexagon-modelling/README.md)
+4. [Marine Cloud Brightening](mcb-modelling/README.md)
 
