@@ -3,9 +3,9 @@
 The code repository for the Single Column Model is available at [https://github.com/UoM-maul1609/simple-cloud-model](https://github.com/UoM-maul1609/simple-cloud-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
 ## Logging in to the container instance
-Prof. Paul Connolly will start up the container instance, give you your username and password and the IP address of the server. To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
+Prof. Paul Connolly will start up the container instance, give you your username, key and the IP address of the server. To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
    
-    ssh -X <username>@<IP-address>  
+    ssh -i id_container.key -X <username>@<IP-address>  
 
 The first time you log in you may need to answer 'yes' to a question about connecting. 
 
@@ -57,10 +57,8 @@ We can open up another `CMD`, or `terminal` window  and connect with SFTP (Secur
 
 From another terminal or CMD window type
 
-	sftp <username>@<IP-address>
+	sftp -i id_container.key <username>@<IP-address>
 	
-Then you will be asked to enter a password.
-
 This will log you into the container instance. You can bring the file over to your local system by typing
 
 	get /tmp/scm_plot.png
