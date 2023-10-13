@@ -36,7 +36,7 @@ The `make` command tells the computer to use a file called `Makefile` which is i
 
 You can run the model after it has been compiled by typing
 
-	./main.exe namelist.pamm
+	./run.sh
 
 Note that `namelist.pamm` is the input file for the model, and includes initial values and processes that the model will consider. 
 
@@ -44,11 +44,11 @@ This generates a file called `/tmp/output.nc`, which is a so-called NetCDF forma
 
 ## Plotting the output
 
-We can use Python to look at the output. There is an example script at `python/scm_plot.py`. This can be edited to output different variables from the NetCDF file. To plot the output file at `/tmp/output.nc` you can type:
+We can use Python to look at the output. There is an example script at `python/scm_plot.py`. This can be edited to output different variables from the NetCDF file. To plot the output file at `/tmp/<username>/output.nc` you can type:
 
 	python3 python/scm_plot.py
 	
-This will generate a file at `/tmp/scm_plot.png`
+This will generate a file at `/tmp/<username>/scm_plot.png`
 
 ## Obtaining the output file
 How to we obtain the output file from inside the container, so that we can view it or insert it in a report?
@@ -61,7 +61,7 @@ From another terminal or CMD window type
 	
 This will log you into the container instance. You can bring the file over to your local system by typing
 
-	get /tmp/scm_plot.png
+	get /tmp/<username>/scm_plot.png
 	
 And then you will be able to view it in the usual way. By default it will be transferred to the folder that you were in before you logged in with ssh. 
 
