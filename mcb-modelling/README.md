@@ -77,7 +77,7 @@ The `bin-microphysics-model` does not take NaCl mixing ratio as an input. It tak
 
 You can do a batch run using some python scripts to simulate how increasing NaCl mixing ratio in the air impacts the cloud albedo of the base case.
 
-To run the batch run code use the `batchRunsMCB.py` script, which is in the `python` folder inside the repository. This runs 50 simulations for a range of NaCl mixing ratios, that are logarithmically spaced from $`10^-14`$ to $`10^{-4}`$ kg kg$`^{-1}`$. 50 output files will be put in `/tmp/<username>`. To go into the python folder enter:
+To run the batch run code use the `batchRunsMCB.py` script, which is in the `python` folder inside the repository. This runs 50 simulations for a range of NaCl mixing ratios, that are logarithmically spaced from $`10^{-14}`$ to $`10^{-4}`$ kg kg$`^{-1}`$. 50 output files will be put in `/tmp/<username>`. To go into the python folder enter:
 	
 	cd python
 
@@ -161,6 +161,31 @@ The figure will look as in Fig 2.
 ![a look-up table](images/lut2.png "LUT")
 
 *Figure 2. A plot of the cloud albedo vs the NaCl mixing ratio for two different mode diameter sizes. The smaller mode size leads to a higher albedo for lower values of NaCl mixing ratio.*
+
+## Cost-Benefit Analysis
+
+### Energy required for the sprayers
+
+To understand whether implementing MCB will be of benefit we need to assess the cost vs the benefit. The paper by Connolly *et al* (2014) assesses the cost of the different spray techniques. These are roughly as follows
+
+Raleigh instability:
+
+$`P_w\cong \left(\frac{0.45}{D_m}+3.2\times 10^6 \right)Q `$
+
+Taylor cone-jets:
+
+$`P_w\cong 1.2\times 10^9 Q `$
+
+Supercritical flow:
+
+$`P_w\cong 4\times 10^9 Q `$
+
+
+Effervescent spraying:
+
+$`P_w\cong 3.4\times 10^8 Q `$
+
+where $`Q`$ is the volume flow rate of water in each case.
 
 ## References
 
