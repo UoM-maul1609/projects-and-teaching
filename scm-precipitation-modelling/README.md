@@ -2,7 +2,7 @@
 
 The code repository for the Single Column Model is available at [https://github.com/UoM-maul1609/simple-cloud-model](https://github.com/UoM-maul1609/simple-cloud-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
-## Logging in to the container instance
+## Logging in to the virtual machine
 Prof. Paul Connolly will start up the VM, give you your username, SSH key (which is a file) and the IP address of the server (VM). To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
    
     ssh -i id_virtual_students.key -X <username>@<IP-address>  
