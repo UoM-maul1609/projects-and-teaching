@@ -3,16 +3,16 @@
 The code repository for the Single Column Model is available at [https://github.com/UoM-maul1609/simple-cloud-model](https://github.com/UoM-maul1609/simple-cloud-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
 ## Logging in to the container instance
-Prof. Paul Connolly will start up the container instance, give you your username, key and the IP address of the server. To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
+Prof. Paul Connolly will start up the VM, give you your username, SSH key (which is a file) and the IP address of the server (VM). To login you need to open `CMD` (on windows), `terminal` if on a mac or Chromebook. You would then type:
    
-    ssh -i id_container.key -X <username>@<IP-address>  
+    ssh -i id_virtual_students.key -X <username>@<IP-address>  
 
 The first time you log in you may need to answer 'yes' to a question about connecting. 
 
 
 ## Downloading the Single Column Model
 
-Once logged in you will be interacting the container instance in the same way as linux server through the terminal. To download the single column model type:
+Once logged in you will be interacting the VM in the same way as you would a linux server through the terminal. To download the single column model type:
 	
 	git clone https://github.com/UoM-maul1609/simple-cloud-model
 	
@@ -36,11 +36,11 @@ The `make` command tells the computer to use a file called `Makefile` which is i
 
 You can run the model after it has been compiled by typing
 
-	./run.sh
+	./run.sh namelist.pamm
 
 Note that `namelist.pamm` is the input file for the model, and includes initial values and processes that the model will consider. 
 
-This generates a file called `/tmp/output.nc`, which is a so-called NetCDF formatted file. 
+This generates a file called `/tmp/<username>/output.nc`, which is a so-called NetCDF formatted file containing the model output data. 
 
 ## Plotting the output
 
@@ -57,13 +57,13 @@ We can open up another `CMD`, or `terminal` window  and connect with SFTP (Secur
 
 From another terminal or CMD window type
 
-	sftp -i id_container.key <username>@<IP-address>
+	sftp -i id_virtual_students.key <username>@<IP-address>
 	
-This will log you into the container instance. You can bring the file over to your local system by typing
+This will log you into the VM. You can bring the file over to your local system by typing
 
 	get /tmp/<username>/scm_plot.png
 	
-And then you will be able to view it in the usual way. By default it will be transferred to the folder that you were in before you logged in with ssh. 
+And then you will be able to view it in the usual way. By default it will be transferred to the folder that you were in before you logged in with SSH. 
 
 ## Factorial Analysis
 
@@ -71,12 +71,15 @@ A neat way of understanding how different factors impact precipitation on the gr
 
 This has been coded up for you for certain factors, but we will discuss factors for you to look at in your project. 
 
-To run the factorial analysis code you can run the model using the `batchRuns.py` script. There are 6 factors by default and each factor has two choices, so this is 2^6^ =64 simulations. 64 output files will be put in `/tmp/`. To run it type:
+To run the factorial analysis code you can run the model using the `batchRuns.py` script, which is in the `python` folder inside the repository. There are 6 factors by default and each factor has two choices, so this is $`2^6 =64`$ simulations. 64 output files will be put in `/tmp/<username>`. To go into the python folder enter:
 	
 	cd python
+
+Then to run the code to batch process these factors type:
+
 	python3 batchRuns.py
 
-In order to analyse these results we can use the `factorialMethod.py` script. Type:
+In order to analyse these results we can use the `factorialMethod.py` script. From inside the `python` directory, enter this command:
 
 	python3 factorialMethod.py
 	
@@ -100,6 +103,11 @@ The effect of each factor will be printed to the screen as
 The 'effect' is just the effect of each factor we are investigating on precipitation on the ground.
 
 Whereas the interactions are the 'non-linear' interactions between factors. For example making the cloud 'deeper' (the first factor) gives more rain. Turning off the warm-rain process (4th factor) gives less rain. But making the cloud deeper AND turning off the warm rain process has a negative interaction (first row and 4th column in the table). This means that you get more rain from a deeper cloud and switching warm rain on than their combined linear effects. 
+
+## How to change the factors I am investigating
+
+These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `namelist.pamm`) and the second element is the comparison that you are making for that factor. 
+
 ## References
 
 1. Teller and Levin, Factorial method as a tool for estimating the relative contribution to precipitation of cloud microphysical processes and environmental conditions: Method and application, 2008, https://doi.org/10.1029/2007JD008960
