@@ -72,7 +72,7 @@ The first calculations of how NaCl mixing ratio in the air impacts cloud albedo 
 The `bin-microphysics-model` does not take NaCl mixing ratio as an input. It takes the aerosol lognormal parameters: $`N_{aer}`$, $`D_{aer}`$, $`\ln\sigma_{aer}`$. Let's say that $`D_{aer}`$ and $`\ln\sigma_{aer}`$ are known. We can calculate $`N_{aer}`$ by dividing by the number weighted average mass of the aerosol. This can be calculated by dividing NaCl mixing ratio by the 3rd [moment of a lognormal](https://en.wikipedia.org/wiki/Log-normal_distribution) with weighting for the mass:
 
 ```math
-\overbar{M}=\frac{\pi}{6}\rho _{NaCl} \exp\left(3\ln D_{aer} + 4.5 \ln ^2\sigma_{aer} \right)
+\bar{M}=\frac{\pi}{6}\rho _{NaCl} \exp\left(3\ln D_{aer} + 4.5 \ln ^2\sigma_{aer} \right)
 ```
 
 You can do a batch run using some python scripts to simulate how increasing NaCl mixing ratio in the air impacts the cloud albedo of the base case.
