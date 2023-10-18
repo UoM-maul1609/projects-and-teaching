@@ -86,27 +86,30 @@ In order to analyse these results we can use the `factorialMethod.py` script. Fr
 The effect of each factor will be printed to the screen as
 
 	Effect of x,y,z
-	[[ 3.13580385e+00]
- 	[-9.80905201e-07]
- 	[ 8.72890989e-03]
- 	[-3.11456348e+00]
- 	[ 4.79087489e-03]
- 	[ 2.70197272e+00]]
-	Interactions
-	              t           aer            hm            wr            rm           ice
-	0           NaN  9.407529e-07  1.010883e-02 -3.095892e+00  1.412962e-02  3.042674e+00
-	1  9.407529e-07           NaN  3.076647e-07  3.045719e-07  2.270008e-07  9.809052e-07
-	2  1.010883e-02  3.076647e-07           NaN  7.741930e-03 -8.728910e-03 -8.728910e-03
-	3 -3.095892e+00  3.045719e-07  7.741930e-03           NaN  7.790749e-03 -3.064033e+00
-	4  1.412962e-02  2.270008e-07 -8.728910e-03  7.790749e-03           NaN -4.790875e-03
-	5  3.042674e+00  9.809052e-07 -8.728910e-03 -3.064033e+00 -4.790875e-03           NaN 	
+		[[ 43738.74993496]
+		 [-53935.79485368]
+		 [ 53299.64164086]
+		 [  -539.24981414]
+		 [ 48381.34649661]
+		 [ 58825.67145921]]
+		Interactions
+		              t           aer            hm          br            m1            m2
+		0           NaN -11593.413864  52866.128636  600.707490  25598.785694  -8086.938432
+		1 -11593.413864           NaN   3021.430069  906.641322  15156.672129 -42487.089173
+		2  52866.128636   3021.430069           NaN  -59.654391  34162.304535 -15403.547601
+		3    600.707490    906.641322    -59.654391         NaN   -570.074529   -549.083881
+		4  25598.785694  15156.672129  34162.304535 -570.074529           NaN  12486.423234
+		5  -8086.938432 -42487.089173 -15403.547601 -549.083881  12486.423234           NaN
+	
 The 'effect' is just the effect of each factor we are investigating on the maximum ice crystal number concentration in the cloud.
 
-Whereas the interactions are the 'non-linear' interactions between factors. For example making the cloud-base 'warmer' (the first factor) gives more rain. Turning off the warm-rain process (4th factor) gives less rain. But making the cloud deeper AND turning off the warm rain process has a negative interaction (first row and 4th column in the table). This means that you get more rain from a deeper cloud and switching warm rain on than their combined linear effects. 
+Whereas the interactions are the 'non-linear' interactions between factors. For example turning on the HM process (the 3rd factor) actually increases the ice in the cloud in this case. Why would that be? Turning on the Mode-2 raindrop-freezing process (6th factor) gives more ice too. These are secondary ice mechanisms, so this is expected. 
 
-## How to change the factors I am investigating
+But making the turning on the HM process AND turning on the Mode-2 process has a negative interaction term (last row or the HM column in the table). This means that when both processes act together we get less ice than the sum of them individually. This is perhaps not too surprising, as there is a limit to the amount of ice we can have in the cloud.
 
-These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `namelist.pamm`) and the second element is the comparison that you are making for that factor. 
+## How to change the factors you are investigating
+
+These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `python/namelist-sip.in`) and the second element is the comparison that you are making for that factor. 
 
 ## References
 

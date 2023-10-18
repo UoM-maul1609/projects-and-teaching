@@ -102,9 +102,11 @@ The effect of each factor will be printed to the screen as
 	5  3.042674e+00  9.809052e-07 -8.728910e-03 -3.064033e+00 -4.790875e-03           NaN 	
 The 'effect' is just the effect of each factor we are investigating on precipitation on the ground.
 
-Whereas the interactions are the 'non-linear' interactions between factors. For example making the cloud 'deeper' (the first factor) gives more rain. Turning off the warm-rain process (4th factor) gives less rain. But making the cloud deeper AND turning off the warm rain process has a negative interaction (first row and 4th column in the table). This means that you get more rain from a deeper cloud and switching warm rain on than their combined linear effects. 
+Whereas the interactions are the 'non-linear' interactions between factors. For example making the cloud 'deeper' (the first factor) gives more rain (the effect is positive). Turning off the warm-rain process (4th factor) gives less rain (the effect is negative). Perhaps not too surprising. 
 
-## How to change the factors I am investigating
+But making the cloud deeper AND turning off the warm rain process has a negative interaction (first row and 4th column in the table). This means that you get more rain on the ground from a deeper cloud and switching warm rain on than their combined linear effects. 
+
+## How to change the factors you are investigating
 
 These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `namelist.pamm`) and the second element is the comparison that you are making for that factor. 
 
