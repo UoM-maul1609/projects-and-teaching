@@ -90,6 +90,7 @@ In order to create the lookup table (LUT) we can use the `lutMCB.py` script. Fro
 This will create a plot in `/tmp/<username>/lut.png`, shown in Fig. 1. Interestingly, we see that increasing the NaCl mixing ratio in the air has a non-linear effect on cloud albedo. Why is this? At the large end the curve tends to an albedo of 1 (i.e. all the visible radiation is reflected to space).
 
 ![a look-up table](images/lut.png "LUT")
+
 *Figure 1. A plot of the cloud albedo vs the NaCl mixing ratio for the default simulation.*
 
 
@@ -156,6 +157,7 @@ You may want to add a legend:
 The figure will look as in Fig 2.
 
 ![a look-up table](images/lut2.png "LUT")
+
 *Figure 2. A plot of the cloud albedo vs the NaCl mixing ratio for two different mode diameter sizes. The smaller mode size leads to a higher albedo for lower values of NaCl mixing ratio.*
 
 ## References
