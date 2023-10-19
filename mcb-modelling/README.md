@@ -1,5 +1,11 @@
 # Cost-Benefit Analysis of Marine Cloud Brightening
 
+## What the project is about
+
+In order to mitigate rising CO2 levels a method of geoengineering, referred to as marine cloud brightening (MCB), has been proposed. This idea is where sea salt aerosol are introduced into the atmosphere from spraying mechanisms on board ships. The additional sea salt aerosol should be carried into the clouds  and the additional aerosol ought to result in an increase in the cloud droplet number concentration inside the clouds and this increase in cloud droplet number concentration should result in more reflective and persistent clouds, which leads to an increase solar radiation being reflected back to space; hence, producing a cooling effect. In this project you will use a parcel model to simulate a marine stratocumulus cloud. You will investigate the effect of changing the aerosol in the cloud and also the amount of CO2 in the atmosphere to understand whether marine cloud brightening is a viable solution for increasing CO2 levels. If interested the project could go down a different route involving a cost-benefit analysis of marine cloud brightening, taking into account the Stern review and climate projections to estimate the benefit of mitigation strategies against 'business as usual' emissions scenarios. 
+
+## Code
+
 The code repository for the Bin Microphysics Model is available at [https://github.com/UoM-maul1609/bin-microphysics-model](https://github.com/UoM-maul1609/bin-microphysics-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
 ## Logging in to the virtual machine
@@ -297,3 +303,5 @@ http://doi.org/10.1098/rsta.2014.0056
 https://doi.org/10.1016/j.asr.2011.01.031
 
 3. Stern, N. (2007). Economic Modelling of Climate-Change Impacts. In The Economics of Climate Change: The Stern Review (pp. 161-190). Cambridge: Cambridge University Press. doi:10.1017/CBO9780511817434.012
+
+4. Latham, J., Bower, K., Choularton, T., Coe, H., Connolly, P., Cooper, G., Craft, T., Foster, J., Gadian, A., Galbraith, L., Iacovides, H., Johnston, D., Launder, B., Leslie, B., Meyer, J., Neukermans, A., Ormond, B., Parkes, B., Rasch, P., Rush, J., Salter, S., Stevenson, T., Wang, H., Wang, Q., Wood, R., 2012. Marine cloud brightening. Philos. Trans. A. Math. Phys. Eng. Sci. 370, 4217–62. https://doi.org/10.1098/rsta.2012.0086
