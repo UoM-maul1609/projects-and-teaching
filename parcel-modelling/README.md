@@ -111,6 +111,15 @@ But making the turning on the HM process AND turning on the Mode-2 process has a
 
 These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `python/namelist-sip.in`) and the second element is the comparison that you are making for that factor. 
 
+Note, if you would like to look into different aerosol distributions you may wish to use [James et al (2023)](https://acp.copernicus.org/articles/23/9099/2023/acp-23-9099-2023.html). They reference a paper by Crooks *et al.* (2018) in their Table 3. This paper also uses the same model suggested in this project.
+
+The mode-2 process was investigated at the University of Manchester and a paper was written about it [(James *et al.*, 2021)](https://acp.copernicus.org/articles/21/18519/2021/). 
+
+Note, a pre-print of a paper about a recent project is in the Earth System Science Data journal, [Finney *et al. (2023)](https://essd.copernicus.org/preprints/essd-2023-303/essd-2023-303.pdf).
+
 ## References
 
 1. Teller and Levin, Factorial method as a tool for estimating the relative contribution to precipitation of cloud microphysical processes and environmental conditions: Method and application, 2008, https://doi.org/10.1029/2007JD008960
+2. James, R. L., Phillips, V. T. J., and Connolly, P. J.: Secondary ice production during the break-up of freezing water drops on impact with ice particles, Atmos. Chem. Phys., 21, 18519–18530, https://doi.org/10.5194/acp-21-18519-2021, 2021.
+3. James, R. L., Crosier, J., and Connolly, P. J.: A bin microphysics parcel model investigation of secondary ice formation in an idealised shallow convective cloud, Atmos. Chem. Phys., 23, 9099–9121, https://doi.org/10.5194/acp-23-9099-2023, 2023
+4. Finney, D. L., Blyth, A. M., Gallagher, M., Wu, H., Nott, G., Biggerstaff, M., Sonnenfeld, R. G., Daily, M., Walker, D., Dufton, D., Bower, K., Boeing, S., Choularton, T., Crosier, J., Groves, J., Field, P. R., Coe, H., Murray, B. J., Lloyd, G., Marsden, N. A., Flynn, M., Hu, K., Thamban, N. M., Williams, P. I., McQuaid, J. B., Robinson, J., Carrie, G., Moore, R., Aulich, G., Burton, R. R., and Connolly, P. J.: DCMEX coordinated aircraft and ground observations: Microphysics, aerosol and dynamics during cumulonimbus development, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2023-303, in review, 2023
