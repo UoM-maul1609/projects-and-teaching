@@ -19,6 +19,12 @@ If you are using a mac, you may find it useful to install [XQuartz](https://www.
 # Example taught module
 If you are using the VMs in one of my taught modules this is probably because you are working off-campus. We have servers you can connect to when on campus. While the instructions are very similar, the IP addresses and authentication will be slightly different. 
 
+# Help with Linux commands
+
+[Here](https://cheatography.com/davechild/cheat-sheets/linux-command-line/) is a useful cheatsheet for useful linux commands.
+
+A more thorough description of some commands is [here](https://www.digitalocean.com/community/tutorials/linux-commands)
+
 # Projects
 Here are details of projects:
  
