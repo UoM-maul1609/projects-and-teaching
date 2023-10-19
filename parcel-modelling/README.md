@@ -1,5 +1,10 @@
 # Parcel Modelling of Secondary Ice Production
 
+## What the project is about
+
+At temperatures between 0 deg C and -38 deg C clouds may contain both liquid drops and ice crystals. These clouds are referred to as mixed-phase clouds and are a significant source of uncertainty in weather and climate. Weather and climate models struggle to correctly simulate the number of ice crystals in them and the behaviour of the clouds strongly depends on getting this correct. More detailed modelling with bin-microphysics can help better understand the processes in detail. At mixed-phase cloud temperatures, ice crystals can form due to primary nucleation on so-called 'ice-nucleating particles' (INPs); or they can form due to 'secondary ice processes' (SIPs). At the University of Manchester, using laboratory measurements, we have recently identified a new SIP mechanism that has the potential to be of great importance in mixed-phase clouds. In this project you will use a cloud parcel model with bin-microphysics to study the effects of aerosols, primary nucleation and secondary ice processes in a range of mixed-phase cloud conditions to understand the importance of the different mechanisms on the formation and development of mixed-phase clouds. 
+
+## Code
 The code repository for the Bin Microphysics Model is available at [https://github.com/UoM-maul1609/bin-microphysics-model](https://github.com/UoM-maul1609/bin-microphysics-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
 ## Logging in to the virtual machine

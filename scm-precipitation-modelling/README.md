@@ -1,5 +1,11 @@
 # Single Column Modelling
 
+## What the project is about
+Understanding how clouds lead to precipitation on the ground (i.e. rainfall) is an important for weather and climate models. There are many processes that can lead to precipitation on the ground and perhaps the most uncertain are those involving the ice phase. 
+
+Single column models are an efficient way to understand how cloud processes may affect precipitation on the ground.  In this project you will set up a single column model to simulate both a 'shallow' and a 'deep' cloud system. You will investigate how different factors affect the simulated precipitation on the ground using a statistical method known as the factorial method. Processes to investigate are how aerosols affect the initial cloud droplet and ice crystal number concentrations and also how a myriad of secondary ice mechanisms can alter precipitation patterns in both shallow and deep cloud cases. 
+
+## Code
 The code repository for the Single Column Model is available at [https://github.com/UoM-maul1609/simple-cloud-model](https://github.com/UoM-maul1609/simple-cloud-model). This model is written in Fortran and has some associated Python scripts for analysis and plotting.
 
 ## Logging in to the virtual machine
@@ -113,3 +119,4 @@ These are defined in the `runsDefine.py` file. This file has a list called `runT
 ## References
 
 1. Teller and Levin, Factorial method as a tool for estimating the relative contribution to precipitation of cloud microphysical processes and environmental conditions: Method and application, 2008, https://doi.org/10.1029/2007JD008960
+2. Shipway, B.J., Hill, A.A., 2012. Diagnosis of systematic differences between multiple parametrizations of warm rain microphysics using a kinematic framework. Q. J. R. Meteorol. Soc. 138, 2196–2211. https://doi.org/10.1002/qj.1913
