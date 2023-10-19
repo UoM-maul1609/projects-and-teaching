@@ -206,7 +206,7 @@ where $A_c$ is the albedo of the clouds unaffected by geoengineering, $A_{clear}
 
 NaCl aerosol must fill the atmospheric marine boundary layer, which is typically 1000 m deep. The total volume of air is therefore the fraction, $f$, of the area of earth multiplied by the height of the boundary layer, $h$:
 
-$`Vol_{air} = \frac{4\pi R_e^2 \times f\times h}`$
+$`Vol_{air} = 4\pi R_e^2 \times f\times h`$
 
 The total mass of NaCl is this volume, multiplied by the density of air, $\rho _{air}$, mutiplied by the NaCl mixing ratio:
 
