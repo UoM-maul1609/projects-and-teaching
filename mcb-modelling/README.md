@@ -1,7 +1,6 @@
 # Cost-Benefit Analysis of Marine Cloud Brightening
 
-## What the project is about
-
+## What the project is about
 In order to mitigate rising CO2 levels a method of geoengineering, referred to as marine cloud brightening (MCB), has been proposed. This idea is where sea salt aerosol are introduced into the atmosphere from spraying mechanisms on board ships. The additional sea salt aerosol should be carried into the clouds  and the additional aerosol ought to result in an increase in the cloud droplet number concentration inside the clouds and this increase in cloud droplet number concentration should result in more reflective and persistent clouds, which leads to an increase solar radiation being reflected back to space; hence, producing a cooling effect. In this project you will use a parcel model to simulate a marine stratocumulus cloud. You will investigate the effect of changing the aerosol in the cloud and also the amount of CO2 in the atmosphere to understand whether marine cloud brightening is a viable solution for increasing CO2 levels. If interested the project could go down a different route involving a cost-benefit analysis of marine cloud brightening, taking into account the Stern review and climate projections to estimate the benefit of mitigation strategies against 'business as usual' emissions scenarios. 
 
 ## Code
