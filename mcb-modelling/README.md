@@ -243,7 +243,7 @@ This means that the intercept is $-3.5\%$
 
 So the a straight line fit to this data is:
 
-$'loss_{GDP} = \left(2\Delta T - 3.5\right)\times 100\times 10^{12} \times \frac{1}{100\%}`$
+$`loss_{GDP} = \left(2\Delta T - 3.5\right)\times 100\times 10^{12} \times \frac{1}{100\%}`$
 
 ---
 ### Cost of ships
