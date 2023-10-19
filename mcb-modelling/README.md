@@ -168,7 +168,7 @@ The figure will look as in Fig 2.
 
 To understand whether implementing MCB will be of benefit we need to assess the cost vs the benefit. The paper by Connolly *et al* (2014) assesses the cost of the different spray techniques. These are roughly as follows
 
-Raleigh instability:
+Rayleigh instability:
 
 $`P_w\cong \left(\frac{0.45}{D_m}+3.2\times 10^6 \right)Q `$
 
@@ -185,9 +185,115 @@ Effervescent spraying:
 
 $`P_w\cong 3.4\times 10^8 Q `$
 
-where $`Q`$ is the volume flow rate of water in each case.
+where $`Q`$ is the volume flow rate of water in each case. 
+
+---
+### Climate calculation
+
+We want to calculate the average global surface temperature, given the values of greenhouse gasses and the albedo. 
+
+The fraction of the globe that is covered by clouds that can be used for MCB is around $`f=17.5\%`$. We assume that the cloud fraction, $cf=70\%$ does not change.
+
+The albedo of the planet, $A_p$, can be estimated by:
+
+$`A_p=\left(cf-f\right)\times A_{c} + \left(1-\left(cf-f\right)\right) \times A_{clear} + f\times A_{gc}`$
+
+where $A_c$ is the albedo of the clouds unaffected by geoengineering, $A_{clear}$ is the albedo of the clear sky, and $A_{gc}$ is the albedo of the geoengineered clouds. Once we calculate, $A_p$, using $A_{gc}$ from our LUT we can calculate the surface temperature in a way similar to [Levenson, 2011](https://www.sciencedirect.com/science/article/pii/S0273117711000883)
+
+---
+
+### How much water, Q?
+
+NaCl aerosol must fill the atmospheric marine boundary layer, which is typically 1000 m deep. The total volume of air is therefore the fraction, $f$, of the area of earth multiplied by the height of the boundary layer, $h$:
+
+$`Vol_{air} = \frac{4\pi R_e^2 \times f\times h}`$
+
+The total mass of NaCl is this volume, multiplied by the density of air, $\rho _{air}$, mutiplied by the NaCl mixing ratio:
+
+$`M_{NaCl} = Vol_{air}\times \rho _{air} \times mr_{NaCl}`$
+
+This aerosol is thought to have a lifetime of $\tau=3$-days in the boundary layer, so in order to achieve a steady state, the rate that NaCl must be put into the atmospheric boundary layer is:
+
+$`Q_{NaCl}=\frac{M_{NaCl} }{\tau }`$
+
+The *salinity* is the mass of salt (kg) divided by the volume of water ($m^3$). It has a value of 35 for sea water. Therefore the volume of sea water that must be pumped into the boundary layer per unit time is:
+
+$`Q_{sea} = \frac{Q_{NaCl}}{35}`$
+
+This can be used to calculate the required power of all of the sprayers.
+
+---
+
+### Cost to society of rise in temperature
+
+The Stern Review (2007) gives some [estimates](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/06CF04AE23902BF0E5DC10358ED37079/9780511817434c7_p161-190_CBO.pdf/economic_modelling_of_climatechange_impacts.pdf) of the cost to society of rising global temperatures. Key messages from this review are:
+
+* 2-3$\circ$C warming results in a 0-3% loss in global GDP
+* 5-6$\circ$C warming results in a 5-10% loss in global GDP
+* These are lower estimates. If there is an amplification, it may lead to a further 5-7% increase in the cost or 11-14% if non-market impacts are included.
+* If we factor in the disporportionate burden of climate change the cost could increase by more than 25%.
+
+Current global GDP is approx. 100 trillion USD
+
+The gradient of percent loss in global GDP to rise in temperature is:
+
+$`\frac{7.5-1.5}{5.5-2.5}=2`$
+
+This means that the intercept is $-3.5\%$
+
+So the a straight line fit to this data is:
+
+$'loss_{GDP} = \left(2\Delta T - 3.5\right)\times 100\times 10^{12} \times \frac{1}{100\%}`$
+
+---
+### Cost of ships
+
+[This](https://www.scientificamerican.com/article/albedo-yachts-and-marine-clouds/) article hints that the cost would be between 3.2 and 4.8 billion USD to build the ships. Assume maintenance is 2.5\%  of that each year (a pure guess, can this estimate be improved?)
+
+---
+
+### Cost of energy
+
+You can't argue that the energy for the sprayers will be free, even if it is derived from wave energy. The energy must have a cost. The device to convert wave energy to useful energy for the sprayers needs to be manufactured and maintained, so we can argue there will be a cost of energy per joule. The estimate used is $3.9\times 10^{-8}$ USD per joule. A better estimate may be found.
+
+---
+
+## Running the cost-benefit analysis
+
+You will need to have run the `batchRunsMCB.py` script to generate the files for the LUT. Then change directory so you are in the `mcb_analysis` folder
+
+	cd mcb_analysis
+	
+You can then edit the script `geoengineering_analysis.py` to choose the spray technology. To do this set `method` on line 66 to one of:
+
+* RAYLEIGH_JET
+* TAYLOR_CONE
+* SUPERCRITICAL
+* EFFERVESCENT
+
+Run the script with:
+
+	python3 geoengineering_analysis.py
+	
+Each time you run the script, 3 plots will be saved in `/tmp/<username>/`. Examples of the cost-benefit analysis are shown in Figure 3.
+
+
+<p float="left">
+  <img src="images/co2_vs_cost_vs_gross_cost_rayleigh.png" width="210" />
+  <img src="images/co2_vs_cost_vs_gross_cost_taylor.png" width="210" /> 
+  <img src="images/co2_vs_cost_vs_gross_cost_supercritical.png" width="210" />
+  <img src="images/co2_vs_cost_vs_gross_cost_effervescent.png" width="210" />
+</p>
+
+*Figure 3. Plots of the cost-benefit analysis for Rayleigh spraying; Taylor Cones, Supercritical, and Effervescent techniques*
+	
 
 ## References
 
 1. Connolly P. J.,  McFiggans G. B., Wood R. and  Tsiamis A. 2014Factors determining the most efficient spray distribution for marine cloud brighteningPhil. Trans. R. Soc. A.3722014005620140056
 http://doi.org/10.1098/rsta.2014.0056
+
+2. Levenson B. P., Planet temperatures with surface cooling parameterized, Advances in Space Research, Volume 47, Issue 11, 2011, Pages 2044-2048, ISSN 0273-1177,
+https://doi.org/10.1016/j.asr.2011.01.031
+
+3. Stern, N. (2007). Economic Modelling of Climate-Change Impacts. In The Economics of Climate Change: The Stern Review (pp. 161-190). Cambridge: Cambridge University Press. doi:10.1017/CBO9780511817434.012
