@@ -228,8 +228,8 @@ This can be used to calculate the required power of all of the sprayers.
 
 The Stern Review (2007) gives some [estimates](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/06CF04AE23902BF0E5DC10358ED37079/9780511817434c7_p161-190_CBO.pdf/economic_modelling_of_climatechange_impacts.pdf) of the cost to society of rising global temperatures. Key messages from this review are:
 
-* 2-3 $'\circ'$C warming results in a 0-3% loss in global GDP
-* 5-6 $'\circ'$C warming results in a 5-10% loss in global GDP
+* 2-3 $'\circ C'$ warming results in a 0-3% loss in global GDP
+* 5-6 $'\circ C'$ warming results in a 5-10% loss in global GDP
 * These are lower estimates. If there is an amplification, it may lead to a further 5-7% increase in the cost or 11-14% if non-market impacts are included.
 * If we factor in the disporportionate burden of climate change the cost could increase by more than 25%.
 
