@@ -48,6 +48,27 @@ Note that `namelist.in` is the input file for the model, and includes initial va
 This generates a file called `/tmp/<username>/output.nc`, which is a so-called NetCDF formatted file containing the model output data. 
 
 ## Plotting the output
+![Height and Streamlines](images/heights_and_streamlines.png "Height and Streamlines")
+
+![Animation 1](images/animation_one.gif "Animation 1")
+
+
+
+
+![normal mode-1](images/normal-modes-1.png "Normal Mode-1")
+
+<p float="left">
+  <img src="images/fourier-wave-number-1.png" width="210" />
+  <img src="images/fourier-wave-number-2.png" width="210" /> 
+  <img src="images/fourier-wave-number-3.png" width="210" />
+  <img src="images/fourier-wave-number-4.png" width="210" />
+</p>
+
+
+![batch vorticity](images/animation_batch.gif "Batch Vorticity")
+
+![Full analysis](images/full_analysis.png "Full analysis")
+
 
 We can use Python to look at the output. There is an example script at `python/example_plot_bmm.py`. This can be edited to output different variables from the NetCDF file. To plot the output file at `/tmp/<username>/output1.nc` you can type:
 
