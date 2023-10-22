@@ -48,33 +48,102 @@ Note that `namelist.in` is the input file for the model, and includes initial va
 This generates a file called `/tmp/<username>/output.nc`, which is a so-called NetCDF formatted file containing the model output data. 
 
 ## Plotting the output
+### Basic plotting of the output
+Once a model simulation is done and saved in `/tmp/<username>/output.nc` you can create a plot of the last output of the height field by typing:
+
+	python3 python/height_and_streamlines.py
+	
+This will create a plot `/tmp/<username>/frame.png`, like the plot in Fig 1.
+
 ![Height and Streamlines](images/heights_and_streamlines.png "Height and Streamlines")
 
-![Animation 1](images/animation_one.gif "Animation 1")
+*Figure 1. A plot of the model height field with streamlines overlaid. Height is a proxy for pressure in the shallow water model. Note the counter-rotating vortices either side of the jet. X and Y coordinate are in metres.*
 
 
+You can create an animated gif of the model output in `/tmp/<username>/output.nc` by typing:
 
+	python3 python/animate_output.py
+	
+This will create an animation `/tmp/<username>/animation.gif`, like the plot in Fig 2.
+
+<div style="text-align: center"> 
+<img style="text-align: center; margin:-180px -200px -130px -130px; mix-blend-mode: multiply" src="images/animation_one.gif" /> </div>
+
+*Figure 2. An animation of the height field (left); the relative vorticity (middle) and the v-wind (right) over the course of one simulation.*
+
+---
+
+### Track the wavenumber and calculate the rotation rate
+
+This is done with the script `python/fourier_wave_number.py`. It will find the numbers of peaks and troughs in the wave, and the phase of the wave for the model simulation at `/tmp/<username>/output.nc`. It will then plot the wave number against the gradient of the phase in units of rotations per year. The output file is saved at `/tmp/<username>/fourier_wave_number.png`. Run the script by typing
+
+	python3 python/fourier_wave_number.py
+
+---
+
+### Linear Theory Analysis
+
+The text book by [Mankin Mak (2012)](https://www-cambridge-org.manchester.idm.oclc.org/core/books/atmospheric-dynamics/D812C816F3F4F580C3448731D7857F5D) gives details of linear growth theory for an idealised jet. This has been coded in python in the file `python/normal_modes_compare.py`. Look to see which values of `u_jets` the calculations are done for and the value of `h_jet`. These can be changed, the file saved and it re-run. To run this analysis type:
+
+	python3 python/normal_modes_compare.py 2
+	
+The file produced is called `/tmp/<username>/fourier_wave_number.png` and is shown in Fig 3. 
 
 ![normal mode-1](images/normal-modes-1.png "Normal Mode-1")
 
-<p float="left">
+*Figure 3. Normal mode analysis for different u_jet values. The thin solid lines are the modes with the largest growth rate at a particular wavenumber value. The one with the highest peak is said to be the dominant mode. However, the dashed-lines are the next most dominant mode and the dotted lines the 3rd most (they are too small to be visible). The thick solid line is a sum of all modes. We see in all cases that the sum has a different wavenumber at the peak than the most dominant.*
+
+Each value of the growth rate has a corresponding wave speed, as explained in the book by [Mankin Mak (2012)](https://www-cambridge-org.manchester.idm.oclc.org/core/books/atmospheric-dynamics/D812C816F3F4F580C3448731D7857F5D). This can be plotted by using the save script, but typing:
+
+	python3 python/normal_modes_compare.py 1
+	
+The file produced is called `/tmp/<username>/fourier_wave_number.png` and is shown in Fig 4. 
+
+![normal mode-2](images/fourier-wave-number-1.png "Normal Mode-2")
+
+*Figure 4. Normal mode analysis for different u_jet values. In this plot the solid lines are the relationship between number of peaks in the wave and the wave speed / rotation rate for the most dominant mode. The dashed lines are for the second most dominant. 3 values of u_jet are shown: 50, 100 and 150 m s$^{-1}$. Blue is 50, turquose is 100 and yellow is 150.*
+
+<!--<p float="left">
   <img src="images/fourier-wave-number-1.png" width="210" />
   <img src="images/fourier-wave-number-2.png" width="210" /> 
   <img src="images/fourier-wave-number-3.png" width="210" />
   <img src="images/fourier-wave-number-4.png" width="210" />
-</p>
+</p>-->
 
+---
+
+### Comparing the model to Linear Theory
+
+You can run a set of simulations in batch mode. Look at the file `batch_runs.sh`. By default this is set up to run simulations for different values of `u_jet` and `c_vis`. You can run by typing
+
+	./batch_runs.sh 4
+	
+The 4 is the number of processors. If you want to set this off and come back later you can type:
+
+	nohup ./batch_runs.sh 4 &
+	
+Check your runs are working by checking `htop` (you can press 'q' to quite from `htop`). The runs will be created in `/tmp/<username>` and will be named as different runs depending on which simulation was done. 
+
+To plot these simulations you can run the `python/animate_batch.py` script (although `u_jet` and `c_vis` need to be set to the same values you used in the `batch_runs.sh` script and the file saved).
+
+	python3 python/animate_batch.py
+
+This will make an animated gif in `/tmp/<username>/animation_batch.gif`, like in Fig. 5. 
 
 ![batch vorticity](images/animation_batch.gif "Batch Vorticity")
 
+*Figure 5. Animated gif of the relative vorticity for different values of u_jet and c_vis. You can see that the slower jets tend to result in higher polygon edge counts. Also the number of edges starts high and gets lower towards the end in some cases.*
+
+
+To compare the batch runs to the linear analysis you can use the script `python/analyse_output.py`. Again `u_jet` and `c_vis` need to be set to the same values you used in the `batch_runs.sh` script. You may need to edit and save this file. Run the script by typing:
+
+	python3 python/analyse_output.py
+	
+This script will call `fourier_wave_number.py` and `normal_modes_compare.py`. `fourier_wave_number.py` calculates from the model output the number of peaks and troughs in the Rossby wave and the rotation speed. These are compared to the normal mode analysis. We choose the most dominant mode at a particular wave number and use the corresponding rotation rate (from the linear analysis) to compare with the model. The file produced is called `/tmp/<username>/full_analysis.png` and an example shown in Fig. 6. 
+ 
 ![Full analysis](images/full_analysis.png "Full analysis")
 
-
-We can use Python to look at the output. There is an example script at `python/example_plot_bmm.py`. This can be edited to output different variables from the NetCDF file. To plot the output file at `/tmp/<username>/output1.nc` you can type:
-
-	python3 python/example_plot_bmm.py
-	
-This will generate a file at `/tmp/<username>/Test.png`
+*Figure 6. Comparison of normal mode theory with model output for different `c_vis` and `u_jet`. In general the rotation rate is slower in the model than in the linear analysis*
 
 ## Obtaining the output file
 How to we obtain the output file from inside the container, so that we can view it or insert it in a report?
@@ -85,56 +154,16 @@ From another terminal or CMD window type
 
 	sftp -i id_virtual_students.key <username>@<IP-address>
 	
-This will log you into the VM. You can bring the file over to your local system by typing
+This will log you into the VM. You can bring any of the files over to your local system by typing (e.g.)
 
-	get /tmp/<username>/Test.png
+	get /tmp/<username>/<filename>
 	
 And then you will be able to view it in the usual way. By default it will be transferred to the folder that you were in before you logged in with SSH. 
 
-## Factorial Analysis
-
-A neat way of understanding how different factors impact precipitation on the ground is the Factorial Method. See [https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JD008960](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JD008960)
-
-This has been coded up for you for certain factors, but we will discuss factors for you to look at in your project. 
-
-To run the factorial analysis code you can run the model using the `batchRuns.py` script, which is in the `python` folder inside the repository. There are 6 factors by default and each factor has two choices, so this is $`2^6 =64`$ simulations. 64 output files will be put in `/tmp/<username>`. To go into the python folder enter:
-	
-	cd python
-
-Then to run the code to batch process these factors type:
-
-	python3 batchRuns.py
-
-In order to analyse these results we can use the `factorialMethod.py` script. From inside the `python` directory, enter this command:
-
-	python3 factorialMethod.py
-	
-The effect of each factor will be printed to the screen as
-
-	Effect of x,y,z
-		[[ 43738.74993496]
-		 [-53935.79485368]
-		 [ 53299.64164086]
-		 [  -539.24981414]
-		 [ 48381.34649661]
-		 [ 58825.67145921]]
-		Interactions
-		              t           aer            hm          br            m1            m2
-		0           NaN -11593.413864  52866.128636  600.707490  25598.785694  -8086.938432
-		1 -11593.413864           NaN   3021.430069  906.641322  15156.672129 -42487.089173
-		2  52866.128636   3021.430069           NaN  -59.654391  34162.304535 -15403.547601
-		3    600.707490    906.641322    -59.654391         NaN   -570.074529   -549.083881
-		4  25598.785694  15156.672129  34162.304535 -570.074529           NaN  12486.423234
-		5  -8086.938432 -42487.089173 -15403.547601 -549.083881  12486.423234           NaN
-	
-The 'effect' is just the effect of each factor we are investigating on the maximum ice crystal number concentration in the cloud.
-
-Whereas the interactions are the 'non-linear' interactions between factors. For example turning on the HM process (the 3rd factor) actually increases the ice in the cloud in this case. Why would that be? Turning on the Mode-2 raindrop-freezing process (6th factor) gives more ice too. These are secondary ice mechanisms, so this is expected. 
-
-But making the turning on the HM process AND turning on the Mode-2 process has a negative interaction term (last row or the HM column in the table). This means that when both processes act together we get less ice than the sum of them individually. This is perhaps not too surprising, as there is a limit to the amount of ice we can have in the cloud.
 
 ## References
 
 1. Ana C. Barbosa Aguiar, Peter L. Read, Robin D. Wordsworth, Tara Salter, Y. Hiro Yamazaki, A laboratory model of Saturn’s North Polar Hexagon, Icarus, Volume 206, Issue 2,
 2010, Pages 755-763,
 https://doi.org/10.1016/j.icarus.2009.10.022.
+2. Mak, M. (2011). Atmospheric Dynamics. Cambridge: Cambridge University Press. (pp 229-235) doi:10.1017/CBO9780511762031
