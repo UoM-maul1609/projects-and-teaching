@@ -118,7 +118,7 @@ These are defined in the `runsDefine.py` file. This file has a list called `runT
 
 Note, if you would like to look into different aerosol distributions you may wish to use [James et al (2023)](https://acp.copernicus.org/articles/23/9099/2023/acp-23-9099-2023.html). They reference a paper by Crooks *et al.* (2018) in their Table 3. This paper also uses the same model suggested in this project. 
 
-You could also look into incorporating aerosol from observations. For example, aerosol observations from the DC-Mex project have been put in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx). Read more under the [Aerosol properties](## Aerosol properties) Section.
+You could also look into incorporating aerosol from observations. For example, aerosol observations from the DC-Mex project have been put in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx). Read more under the [Aerosol properties](##aerosol-properties) Section.
 
 The mode-2 process was investigated at the University of Manchester and a paper was written about it [(James *et al.*, 2021)](https://acp.copernicus.org/articles/21/18519/2021/). 
 
@@ -128,7 +128,7 @@ Note, a pre-print of a paper about a recent project is in the Earth System Scien
 
 The aerosol in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) are from the DCMEX campaign. It includes the size distributions (dN/dlnDp vs. Dp) from SMPS measurement, the calculated bulk kappa value and the density from AMS+SP2 measurements. It also includes the initial temp, pressure, and RH.
 
-3-mode fits have been plotted in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) and these can be used in the model. `n_aer` values need to be multiplied by `1e6` and `d_aer` values need to be multiplied by `1e-9` before putting into the namelist. The model fits were done by using the equation for $`\frac{dN}{d\ln D}`$ from equation 1 of [Connolly *et al.* (2014)](https://acp.copernicus.org/articles/14/2289/2014/acp-14-2289-2014.pdf)
+3-mode fits have been plotted in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx) and these can be used in the model. `n_aer` values need to be multiplied by `1e6` and `d_aer` values need to be multiplied by `1e-9` before putting into the namelist. The model fits were done by using the equation for $`\frac{dN}{d\ln D}`$ from equation 1 of [Connolly *et al.* (2014)](https://acp.copernicus.org/articles/14/2289/2014/acp-14-2289-2014.pdf)
 
 From the spreadsheet you can see that `kappa` values are given. This it a way of calculating the equililbrium vapour pressure of the aerosol particles following [Petters and Kriedenweis (2007)](https://acp.copernicus.org/articles/7/1961/2007/). To use this method in the model set `kappa_flag=1` in the `python/namelist-sip.in` file and set the first element of `kappa_core1` to the value in the spreadsheet. Density values are also given in the spreadsheet. These can be set in the `python/namelist-sip.in` file by changing the first element of `density_core1`.
 
