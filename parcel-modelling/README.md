@@ -124,7 +124,7 @@ The mode-2 process was investigated at the University of Manchester and a paper 
 
 Note, a pre-print of a paper about a recent project is in the Earth System Science Data journal, [Finney *et al.* (2023)](https://essd.copernicus.org/preprints/essd-2023-303/essd-2023-303.pdf).
 
-## Aerosol properties
+##Aerosol properties
 
 The aerosol in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) are from the DCMEX campaign. It includes the size distributions (dN/dlnDp vs. Dp) from SMPS measurement, the calculated bulk kappa value and the density from AMS+SP2 measurements. It also includes the initial temp, pressure, and RH.
 
