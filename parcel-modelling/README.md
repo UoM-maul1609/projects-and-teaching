@@ -126,7 +126,7 @@ Note, a pre-print of a paper about a recent project is in the Earth System Scien
 
 ## Aerosol properties
 
-The aerosol in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) are from the DCMEX campaign. It includes the size distributions (dN/dlnDp vs. Dp) from SMPS measurement, the calculated bulk kappa value and the density from AMS+SP2 measurements. It also includes the initial temp, pressure, and RH.
+The aerosol in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx) are from the DCMEX campaign. It includes the size distributions (dN/dlnDp vs. Dp) from SMPS measurement, the calculated bulk kappa value and the density from AMS+SP2 measurements. It also includes the initial temp, pressure, and RH.
 
 3-mode fits have been plotted in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx) and these can be used in the model. `n_aer` values need to be multiplied by `1e6` and `d_aer` values need to be multiplied by `1e-9` before putting into the namelist. The model fits were done by using the equation for $`\frac{dN}{d\ln D}`$ from equation 1 of [Connolly *et al.* (2014)](https://acp.copernicus.org/articles/14/2289/2014/acp-14-2289-2014.pdf)
 
