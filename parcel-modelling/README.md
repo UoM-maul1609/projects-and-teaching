@@ -118,7 +118,7 @@ These are defined in the `runsDefine.py` file. This file has a list called `runT
 
 Note, if you would like to look into different aerosol distributions you may wish to use [James et al (2023)](https://acp.copernicus.org/articles/23/9099/2023/acp-23-9099-2023.html). They reference a paper by Crooks *et al.* (2018) in their Table 3. This paper also uses the same model suggested in this project. 
 
-You could also look into incorporating aerosol from observations. For example, aerosol observations from the DC-Mex project have been put in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx). Read more under the [Aerosol properties](##aerosol-properties) Section.
+You could also look into incorporating aerosol from observations. For example, aerosol observations from the DC-Mex project have been put in the file [data/Model_inputs_DCMEX.xlsx](data/Model_inputs_DCMEX.xlsx). Read more under the [Aerosol properties](#aerosol-properties) Section.
 
 The mode-2 process was investigated at the University of Manchester and a paper was written about it [(James *et al.*, 2021)](https://acp.copernicus.org/articles/21/18519/2021/). 
 
