@@ -116,11 +116,21 @@ But making the turning on the HM process AND turning on the Mode-2 process has a
 
 These are defined in the `runsDefine.py` file. This file has a list called `runToDo`. Each element in the list is also a list of length 2. The first element (in each length-2 list) is the default case (in the base input file, `python/namelist-sip.in`) and the second element is the comparison that you are making for that factor. 
 
-Note, if you would like to look into different aerosol distributions you may wish to use [James et al (2023)](https://acp.copernicus.org/articles/23/9099/2023/acp-23-9099-2023.html). They reference a paper by Crooks *et al.* (2018) in their Table 3. This paper also uses the same model suggested in this project.
+Note, if you would like to look into different aerosol distributions you may wish to use [James et al (2023)](https://acp.copernicus.org/articles/23/9099/2023/acp-23-9099-2023.html). They reference a paper by Crooks *et al.* (2018) in their Table 3. This paper also uses the same model suggested in this project. 
+
+You could also look into incorporating aerosol from observations. For example, aerosol observations from the DC-Mex project have been put in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx). Read more under the [Aerosol properties](## Aerosol properties) Section.
 
 The mode-2 process was investigated at the University of Manchester and a paper was written about it [(James *et al.*, 2021)](https://acp.copernicus.org/articles/21/18519/2021/). 
 
-Note, a pre-print of a paper about a recent project is in the Earth System Science Data journal, [Finney *et al. (2023)](https://essd.copernicus.org/preprints/essd-2023-303/essd-2023-303.pdf).
+Note, a pre-print of a paper about a recent project is in the Earth System Science Data journal, [Finney *et al.* (2023)](https://essd.copernicus.org/preprints/essd-2023-303/essd-2023-303.pdf).
+
+## Aerosol properties
+
+The aerosol in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) are from the DCMEX campaign. It includes the size distributions (dN/dlnDp vs. Dp) from SMPS measurement, the calculated bulk kappa value and the density from AMS+SP2 measurements. It also includes the initial temp, pressure, and RH.
+
+3-mode fits have been plotted in the file [data/Model inputs_DCMEX.xlsx](data/Model inputs_DCMEX.xlsx) and these can be used in the model. `n_aer` values need to be multiplied by `1e6` and `d_aer` values need to be multiplied by `1e-9` before putting into the namelist. The model fits were done by using the equation for $`\frac{dN}{d\ln D}`$ from equation 1 of [Connolly *et al.* (2014)](https://acp.copernicus.org/articles/14/2289/2014/acp-14-2289-2014.pdf)
+
+From the spreadsheet you can see that `kappa` values are given. This it a way of calculating the equililbrium vapour pressure of the aerosol particles following [Petters and Kriedenweis (2007)](https://acp.copernicus.org/articles/7/1961/2007/). To use this method in the model set `kappa_flag=1` in the `python/namelist-sip.in` file and set the first element of `kappa_core1` to the value in the spreadsheet. Density values are also given in the spreadsheet. These can be set in the `python/namelist-sip.in` file by changing the first element of `density_core1`.
 
 ## References
 
@@ -128,3 +138,5 @@ Note, a pre-print of a paper about a recent project is in the Earth System Scien
 2. James, R. L., Phillips, V. T. J., and Connolly, P. J.: Secondary ice production during the break-up of freezing water drops on impact with ice particles, Atmos. Chem. Phys., 21, 18519–18530, https://doi.org/10.5194/acp-21-18519-2021, 2021.
 3. James, R. L., Crosier, J., and Connolly, P. J.: A bin microphysics parcel model investigation of secondary ice formation in an idealised shallow convective cloud, Atmos. Chem. Phys., 23, 9099–9121, https://doi.org/10.5194/acp-23-9099-2023, 2023
 4. Finney, D. L., Blyth, A. M., Gallagher, M., Wu, H., Nott, G., Biggerstaff, M., Sonnenfeld, R. G., Daily, M., Walker, D., Dufton, D., Bower, K., Boeing, S., Choularton, T., Crosier, J., Groves, J., Field, P. R., Coe, H., Murray, B. J., Lloyd, G., Marsden, N. A., Flynn, M., Hu, K., Thamban, N. M., Williams, P. I., McQuaid, J. B., Robinson, J., Carrie, G., Moore, R., Aulich, G., Burton, R. R., and Connolly, P. J.: DCMEX coordinated aircraft and ground observations: Microphysics, aerosol and dynamics during cumulonimbus development, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2023-303, in review, 2023
+5. Petters, M. D. and Kreidenweis, S. M.: A single parameter representation of hygroscopic growth and cloud condensation nucleus activity, Atmos. Chem. Phys., 7, 1961–1971, https://doi.org/10.5194/acp-7-1961-2007, 2007
+6. Connolly, P. J., Topping, D. O., Malavelle, F., and McFiggans, G.: A parameterisation for the activation of cloud drops including the effects of semi-volatile organics, Atmos. Chem. Phys., 14, 2289–2302, https://doi.org/10.5194/acp-14-2289-2014, 2014.
