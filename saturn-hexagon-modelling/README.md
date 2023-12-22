@@ -64,7 +64,7 @@ You can create an animated gif of the model output in `/tmp/<username>/output.nc
 
 	python3 python/animate_output.py
 	
-This will create an animation `/tmp/<username>/animation.gif`, like the plot in Fig 2.
+This will create an animation `/tmp/<username>/animation.gif`, like the plot in Fig 2. We see it is possible to get polygon shapes in the simulations, owing to the high shear. The question is what causes the shear? This may be explained by the storms that are present on Saturn (see Li <i>et al.</i>, 2023)
 
 <div style="text-align: center"> 
 <img style="text-align: center; margin:-180px -200px -130px -130px; mix-blend-mode: multiply" src="images/animation_one.gif" /> </div>
@@ -167,3 +167,4 @@ And then you will be able to view it in the usual way. By default it will be tra
 2010, Pages 755-763,
 https://doi.org/10.1016/j.icarus.2009.10.022.
 2. Mak, M. (2011). Atmospheric Dynamics. Cambridge: Cambridge University Press. (pp 229-235) doi:10.1017/CBO9780511762031
+3. Li et al. (2023), Long-lasting, deep effect of Saturn’s giant storms. https://www.science.org/doi/10.1126/sciadv.adg9419
