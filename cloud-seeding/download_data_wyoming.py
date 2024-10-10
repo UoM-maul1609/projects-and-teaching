@@ -55,7 +55,7 @@ if __name__=="__main__":
 			info=newWebstring.split('=')
 			fp = open(dataPath + '/loc_' + info[-1] + '_' + \
 				thisYearStr + '-' + thisMonthStr + '-' + \
-				thisDatStr + '_' + hours[j] + '.txt','w')
+				thisDateStr + '_' + hours[j] + '.txt','w')
 			
 			fp.write(soup.get_text())
 				
