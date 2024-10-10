@@ -9,7 +9,8 @@ from pathlib import Path
 
 if __name__=="__main__":
 	# path
-	dataPath=Path.home() + "/SondeData/"
+	dataPath=Path.home() 
+	dataPath=dataPath.joinpath("/SondeData/")
 	Path(dataPath).mkdir(parents=True, exist_ok=True)
 
 	# today
@@ -56,9 +57,9 @@ if __name__=="__main__":
 					
 					# now, save this to a file in home folder
 					info=newWebstring.split('=')
-					fp = open(dataPath + '/loc_' + info[-1] + '_' + \
+					fp = open(dataPath.joinpath('/loc_' + info[-1] + '_' + \
 						thisYearStr + '-' + thisMonthStr + '-' + \
-						thisDayStr + '_' + hours[j] + '.txt','w')
+						thisDayStr + '_' + hours[j] + '.txt'),'w')
 					
 					fp.write(soup.get_text())
 					worked=True
