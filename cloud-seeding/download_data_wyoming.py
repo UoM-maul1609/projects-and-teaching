@@ -9,7 +9,7 @@ from pathlib import Path
 
 if __name__=="__main__":
 	# path
-	dataPath=pathlib.Path.home() + "/SondeData/"
+	dataPath=Path.home() + "/SondeData/"
 	Path(dataPath).mkdir(parents=True, exist_ok=True)
 
 	# today
