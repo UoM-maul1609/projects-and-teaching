@@ -57,7 +57,7 @@ if __name__=="__main__":
 					
 					# now, save this to a file in home folder
 					info=newWebstring.split('=')
-					fp = open(dataPath.joinpath('/loc_' + info[-1] + '_' + \
+					fp = open(dataPath.joinpath('loc_' + info[-1] + '_' + \
 						thisYearStr + '-' + thisMonthStr + '-' + \
 						thisDayStr + '_' + hours[j] + '.txt'),'w')
 					
