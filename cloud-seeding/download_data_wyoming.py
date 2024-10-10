@@ -10,7 +10,7 @@ from pathlib import Path
 if __name__=="__main__":
 	# path
 	dataPath=Path.home() 
-	dataPath=dataPath.joinpath("/SondeData/")
+	dataPath=dataPath.joinpath("SondeData/")
 	Path(dataPath).mkdir(parents=True, exist_ok=True)
 
 	# today
