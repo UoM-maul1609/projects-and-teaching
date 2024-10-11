@@ -31,4 +31,6 @@ Here are details of projects:
 2. [Secondary Ice Modelling](parcel-modelling/README.md)
 3. [Saturn's Hexagon](saturn-hexagon-modelling/README.md)
 4. [Marine Cloud Brightening](mcb-modelling/README.md)
+5. [Mars Atmosphere Evolution](mars-atmosphere-modelling/README.md)
+6. [Cloud Seeding Analysis](cloud-seeding/README.md)
 
