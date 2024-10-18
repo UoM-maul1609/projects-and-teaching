@@ -3,6 +3,12 @@ import os
 import tephi
 from tephi import Tephigram
 import numpy as np
+import getpass
+import os
+
+username=getpass.getuser()
+
+outputFile='/tmp/' + username + '/tephigram.png'
 
 ind,=np.where(np.isnan(data1['DWPT'])==False)
 dewpoint = list(zip(data1['PRESS'][ind], data1['DWPT'][ind]))
@@ -19,6 +25,10 @@ profile = tephigram.plot(dewpoint, label='Dew Point Temperature', color='blue')
 profile.barbs(barbs)
 tephigram.plot(drybulb, label='Dry Bulb Temperature', color='red')
 
+
+if not os.path.exists('/tmp/' +username):
+   os.mkdir('/tmp/' + username) 
+plt.savefig(outputFile)
 
 #plt.axis((1600,1800,1680,1900))  
 
