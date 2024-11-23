@@ -105,6 +105,53 @@ def readOneFile(fileName):
 		data1['Observation time']=np.nan
 	return data1
 
+def do_it():
+        # path
+        dataPath=Path.home()
+        dataPath=dataPath.joinpath("SondeData/")
+        d=str(dataPath.joinpath('*.txt'))
+        files=glob.glob(d)
+        files.sort()
+
+
+
+        tlcl=np.zeros(len(files))
+        plcl=np.zeros(len(files))
+        pw=np.zeros(len(files))
+        cape=np.zeros(len(files))
+        cin=np.zeros(len(files))
+        time=[]
+        k=0
+        dats=[]
+        for i in range(len(files)):
+                #print(str(i) + ' ' + files[i])
+                try:
+                        data1=readOneFile(files[i])
+                        if(len(data1)):
+                                time.append(data1['Observation time'])
+                                pw[k]=data1['Precipitable water [mm] for entire sounding']
+                                tlcl[k]=data1['Temp [K] of the Lifted Condensation Level']
+                                plcl[k]=data1['Pres [hPa] of the Lifted Condensation Level']
+                                cape[k]=data1['Convective Available Potential Energy']
+                                cin[k]=data1['Convective Inhibition']
+                                k += 1
+                                dats.append(data1)
+                except:
+                        pass
+
+        pw=pw[:k]
+        tlcl=tlcl[:k]
+        plcl=plcl[:k]
+        cape=cape[:k]
+        cin=cin[:k]
+
+
+        (arr,height_array)=interpolateData(dats,'THTA')
+        (arr2,height_array)=interpolateData(dats,'MIXR')
+        (arr2,height_array)=interpolateData(dats,'RELH')
+
+        return (data1,dats,tlcl,plcl,cape,cin,pw,time)
+
 if __name__=="__main__":
 	# path
 	dataPath=Path.home() 
