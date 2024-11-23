@@ -41,7 +41,7 @@ def batchRuns(radiosonde):
       
         fileName=outputDir + '/' + username + '/output' + n.zfill(3) + '.nc'
         # change the output filename
-        changeFile(inputFile,dumpFile,'/tmp/output.nc',fileName)
+        changeFile(inputFile,dumpFile,'/tmp/output1.nc',fileName)
         # zinit
         changeFile(dumpFile,tmpFile,'zinit=4863.61,',z_replace)
         # tinit
