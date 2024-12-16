@@ -8,7 +8,7 @@ import createModelProfile
 
 username=getpass.getuser()
 outputDir='/tmp'
-def batchRuns(radiosonde):
+def batchRuns(radiosonde,seedFlag):
     
     num_runs=len(radiosonde)   
     
@@ -38,8 +38,11 @@ def batchRuns(radiosonde):
 
         print('Run number '+ n.zfill(3))
 
-      
-        fileName=outputDir + '/' + username + '/output' + n.zfill(3) + '.nc'
+        if seedFlag:  
+           fileName=outputDir + '/' + username + '/outputseed' + n.zfill(3) + '.nc'
+        else:
+           fileName=outputDir + '/' + username + '/output' + n.zfill(3) + '.nc'
+
         # change the output filename
         changeFile(inputFile,dumpFile,'/tmp/output1.nc',fileName)
         # zinit
@@ -70,9 +73,10 @@ def batchRuns(radiosonde):
 
 
         # psd of seed https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020JD033771
-        #changeFile(tmpFile,tmpFile,\
-        #        'n_aer1(1:4,2:2)        = 0e6, 0e6, 0e6, 0.e6, d_aer1(1:4,2:2)        = 0.103e-6  , 0.175e-6, 0.045e-6, 1e-7, sig_aer1(1:4,2:2)      = 0.39   , 0.1, 0.25, 0.25,', \
-        #        'n_aer1(1:4,2:2)        = 40000e6, 300e6, 0e6, 0.e6, d_aer1(1:4,2:2)        = 0.3e-6  , 1.0e-6, 0.045e-6, 1e-7, sig_aer1(1:4,2:2)      = 0.344   , 0.693, 0.25, 0.25,')
+        if seedFlag:
+            changeFile(tmpFile,tmpFile,\
+                'n_aer1(1:4,2:2)        = 0e6, 0e6, 0e6, 0.e6, d_aer1(1:4,2:2)        = 0.103e-6  , 0.175e-6, 0.045e-6, 1e-7, sig_aer1(1:4,2:2)      = 0.39   , 0.1, 0.25, 0.25,', \
+                'n_aer1(1:4,2:2)        = 40000e6, 300e6, 0e6, 0.e6, d_aer1(1:4,2:2)        = 0.3e-6  , 1.0e-6, 0.045e-6, 1e-7, sig_aer1(1:4,2:2)      = 0.344   , 0.693, 0.25, 0.25,')
 
 
         changeFile(tmpFile,tmpFile,\
@@ -133,7 +137,7 @@ if __name__=="__main__":
     # only choose files where cape >= 100
     inds,=np.where(cape >= 100)
     datsnew = [dats[i] for i in inds]
-
+    seedFlag=False
     # run parcel model for all cases
-    batchRuns(datsnew)
+    batchRuns(datsnew,seedFlag)
     
